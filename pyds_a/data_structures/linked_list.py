@@ -68,7 +68,6 @@ class LinkedList:
         """
         self.head = None
 
-
     def is_empty(self):
         """
         Check if the linked list is empty.
@@ -105,12 +104,55 @@ class LinkedList:
         new_node.next = self.head
         self.head = new_node
 
-    def delete(self, data):
+    def size(self):
+        """Get the number of elements in the linked list.
+
+        Returns:
+            int: The number of elements in the linked list.
         """
-        Delete the first occurrence of a node with the given data from the linked list.
+        count = 0
+        current = self.head
+        while current:
+            count += 1
+            current = current.next
+        return count
+
+    def insert(self, data):
+        """Insert a new element with the given data at the end of the list.
 
         Args:
-            data: The data to be deleted from the linked list.
+            data: The data to be inserted.
+        """
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def search(self, data):
+        """Search for an element with the specified data in the list.
+
+        Args:
+            data: The data to search for.
+
+        Returns:
+            bool: True if the data is found, False otherwise.
+        """
+        current = self.head
+        while current:
+            if current.data == data:
+                return True
+            current = current.next
+        return False
+
+    def delete(self, data):
+        """Delete the first occurrence of an element with the specified data.
+
+        Args:
+            data: The data to delete.
         """
         if self.head is None:
             return
@@ -126,22 +168,22 @@ class LinkedList:
                 return
             current = current.next
 
-    def search(self, data):
-        """
-        Search for a node with the given data in the linked list.
-
-        Args:
-            data: The data to be searched for.
+    def get_list(self):
+        """Get a list containing all elements in the linked list.
 
         Returns:
-            bool: True if the data is found, False otherwise.
+            list: A list of elements in the linked list.
         """
+        result = []
         current = self.head
         while current:
-            if current.data == data:
-                return True
+            result.append(current.data)
             current = current.next
-        return False
+        return result
+
+    def clear(self):
+        """Clear the linked list by setting the head to None."""
+        self.head = None
 
     def display(self):
         """

@@ -11,15 +11,6 @@ The Stack class provides methods for adding items to the top of the stack, remov
 from the top of the stack, checking if the stack is empty, getting the current size
 of the stack, and peeking at the item on the top of the stack without removing it.
 
-Usage:
-    from stack import Stack
-
-    my_stack = Stack()
-    my_stack.push(1)
-    my_stack.push(2)
-    item = my_stack.pop()
-    size = my_stack.size()
-
 """
 
 class Stack:
@@ -59,10 +50,10 @@ class Stack:
         Returns:
             The item removed from the top of the stack.
         """
-        if not self.is_empty():
+        try:
             return self.items.pop()
-        else:
-            raise IndexError("Stack is empty")
+        except IndexError as exc:
+            raise IndexError("Stack is empty") from exc
 
     def is_empty(self):
         """
@@ -89,6 +80,7 @@ class Stack:
         Returns:
             The item at the top of the stack.
         """
+
         if not self.is_empty():
             return self.items[-1]
         else:
