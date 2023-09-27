@@ -1,3 +1,5 @@
+# pylint: disable=missing-function-docstring
+
 import pytest
 from pyds_a.data_structures.linked_list import LinkedList  # Import your LinkedList implementation
 
