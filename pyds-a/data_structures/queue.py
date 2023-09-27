@@ -1,4 +1,8 @@
 """
+<<<<<<< HEAD:PyDS-A/Data Structures/queue.py
+=======
+
+>>>>>>> 79039d9 (Adding Searches):pyds-a/data_structures/queue.py
 Author: Tinny-Robot
 
 queue.py - A Python implementation of a queue data structure.

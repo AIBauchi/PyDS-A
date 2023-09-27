@@ -1,0 +1,137 @@
+# Byte-compiled / compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Python virtual environment
+venv/
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Environment-specific files
+.env
+.env.*
+
+# Local development files
+db.sqlite3
+
+# Compiled Python files
+*.pyc
+
+# Compiled C extension files
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Django stuff
+*.log
+local_settings.py
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Scrapy stuff
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+dist/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+.sage-sage/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite3
+
+# Caches and backups
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Editors
+*.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Other
+*~
+*.bak
+*.pyc
+*.swp
+*.db
+*.sqlite3
+*.log
+*.tmp
+*.out
+__pycache__/
+.cache/
+*.egg-info/
+.installed.cfg
+*.egg
+*.manifest
+*.bak
