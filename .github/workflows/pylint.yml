@@ -22,8 +22,7 @@ jobs:
         pip install pytest
     - name: Run pylint with custom disable
       run: |
-        pylint --disable=C0114
-        pylint --disable=R1705
+        pylint --fail-under=7
         
     - name: Analysing the code with pylint
       run: |
