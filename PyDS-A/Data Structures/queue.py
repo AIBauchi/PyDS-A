@@ -1,4 +1,6 @@
 """
+Author: Tinny-Robot
+
 queue.py - A Python implementation of a queue data structure.
 
 This file contains the implementation of a queue data structure using a list.
@@ -18,7 +20,6 @@ Usage:
     item = my_queue.dequeue()
     size = my_queue.size()
 
-Author: Tinny-Robot
 """
 
 class Queue:
