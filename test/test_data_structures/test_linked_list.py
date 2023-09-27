@@ -3,14 +3,14 @@ from pyds_a.data_structures.linked_list import LinkedList  # Import your LinkedL
 
 def test_empty_linked_list():
     ll = LinkedList()
-    assert ll.is_empty() == True
+    assert ll.is_empty() is True
     assert ll.size() == 0
 
 def test_linked_list_insert():
     ll = LinkedList()
     ll.insert(1)
     assert ll.size() == 1
-    assert ll.search(1) == True
+    assert ll.search(1) is True
 
 def test_linked_list_delete():
     ll = LinkedList()
@@ -18,8 +18,8 @@ def test_linked_list_delete():
     ll.insert(2)
     ll.delete(1)
     assert ll.size() == 1
-    assert ll.search(1) == False
-    assert ll.search(2) == True
+    assert ll.search(1) is False
+    assert ll.search(2) is True
 
 def test_linked_list_get_list():
     ll = LinkedList()
@@ -34,9 +34,9 @@ def test_linked_list_clear():
     ll.insert(2)
     ll.clear()
     assert ll.size() == 0
-    assert ll.is_empty() == True
-    assert ll.search(1) == False
-    assert ll.search(2) == False
+    assert ll.is_empty() is True
+    assert ll.search(1) is False
+    assert ll.search(2) is False
 
 if __name__ == "__main__":
     pytest.main()
