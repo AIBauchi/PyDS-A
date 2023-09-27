@@ -20,6 +20,11 @@ jobs:
         pip install -r requirements.txt
         pip install pylint
         pip install pytest
+    - name: Run pylint with custom disable
+      run: |
+        pylint --disable=C0114
+        pylint --disable=R1705
+        
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
