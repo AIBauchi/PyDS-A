@@ -24,7 +24,7 @@ Package Contents:
     - greet(): A function to provide a welcome message.
 
 For more information and examples, visit the PyDS-A GitHub repository:
-https://github.com/yourusername/PyDS-A
+https://github.com/AIBauchi/PyDS-A
 """
 
 # Import specific modules or classes from subpackages
