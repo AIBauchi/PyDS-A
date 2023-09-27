@@ -167,7 +167,7 @@ We want your work to be readable by others; therefore, we encourage you to note 
 - If you need a third-party module that is not in the file __requirements.txt__, please add it to that file as part of your submission.
 
 #### Other Requirements for Submissions
-- If you are submitting code in the `project_euler/` directory, please also read [the dedicated Guideline](https://github.com/AIBauchi/PyDS-A/blob/master/project_euler/README.md) before contributing to our Project Euler library.
+- If you are submitting code in the `data_structures/` directory, please also read [the dedicated Guideline](https://github.com/AIBauchi/PyDS-A/blob/main/pyds-a/data_structures/README.md) before contributing to our Project Euler library.
 - The file extension for code files should be `.py`.
 - Strictly use snake_case (underscore_separated) in your file_name, as it will be easy to parse in future using scripts.
 - Please avoid creating new directories if at all possible. Try to fit your work into the existing directory structure.
