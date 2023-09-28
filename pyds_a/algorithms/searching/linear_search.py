@@ -13,7 +13,6 @@ For manual testing, run:
 python3 linear_search.py
 """
 
-
 def linear_search(sequence: list, target: int) -> int:
     """
     A pure Python implementation of a linear search algorithm.
@@ -39,7 +38,6 @@ def linear_search(sequence: list, target: int) -> int:
         if item == target:
             return index
     return -1
-
 
 def rec_linear_search(sequence: list, low: int, high: int, target: int) -> int:
     """
@@ -73,7 +71,6 @@ def rec_linear_search(sequence: list, low: int, high: int, target: int) -> int:
     if sequence[high] == target:
         return high
     return rec_linear_search(sequence, low + 1, high - 1, target)
-
 
 if __name__ == "__main__":
     user_input = input("Enter numbers separated by comma:\n").strip()

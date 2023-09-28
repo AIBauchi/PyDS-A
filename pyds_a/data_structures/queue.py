@@ -22,7 +22,6 @@ Usage:
 
 """
 
-
 class Queue:
     """
     Represents a queue data structure implemented using a list.
