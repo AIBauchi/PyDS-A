@@ -13,6 +13,7 @@ of the stack, and peeking at the item on the top of the stack without removing i
 
 """
 
+
 class Stack:
     """
     Represents a stack data structure implemented using a list.
