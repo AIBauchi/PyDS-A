@@ -34,3 +34,4 @@ if bad_files:
     import sys
 
     sys.exit(bad_files)
+    

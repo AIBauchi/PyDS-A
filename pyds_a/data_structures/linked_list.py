@@ -5,7 +5,6 @@ This module defines a simple singly linked list data structure with basic operat
 adding nodes, removing nodes, searching for a specific value, and displaying the list's contents.
 """
 
-
 class Node:
     """
     Represents a node in a singly linked list.
@@ -42,7 +41,6 @@ class Node:
             data: The new data value to be stored in the node.
         """
         self.data = data
-
 
 class LinkedList:
     """
