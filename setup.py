@@ -1,19 +1,19 @@
 from setuptools import setup, find_packages
 
 # Package metadata
-NAME = "PyDS-A"
-VERSION = "1.0.0"
-DESCRIPTION = "A collection of data structures and algorithms in Python."
-AUTHOR = "Tinny-Robot"
-EMAIL = "handanfoun@gmail.com"
-URL = "https://github.com/AIBauchi/PyDS-A"
-LICENSE = "MIT"
+NAME = 'PyDS-A'
+VERSION = '1.0.0'
+DESCRIPTION = 'A collection of data structures and algorithms in Python.'
+AUTHOR = 'Tinny-Robot'
+EMAIL = 'handanfoun@gmail.com'
+URL = 'https://github.com/AIBauchi/PyDS-A'
+LICENSE = 'MIT'
 CLASSIFIERS = [
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Topic :: Software Development :: Libraries",
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Topic :: Software Development :: Libraries',
 ]
 
 # Package dependencies

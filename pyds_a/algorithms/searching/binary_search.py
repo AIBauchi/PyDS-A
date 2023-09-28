@@ -9,7 +9,6 @@ index of the target value if found, or -1 if not found.
 """
 from functools import lru_cache
 
-
 @lru_cache
 def binary_search(arr, target):
     """
