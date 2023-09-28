@@ -16,6 +16,7 @@ For manual testing and demonstration, you can use the script as follows:
 python3 bubble_sort.py
 """
 
+
 def bubble_sort(arr):
     """
     Sorts a list in ascending order using the Bubble Sort algorithm.
@@ -33,16 +34,18 @@ def bubble_sort(arr):
         [11, 12, 22, 25, 64]
     """
     n = len(arr)
-    
+
     for i in range(n):
         swapped = False
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
                 swapped = True
         if not swapped:
             break
 
+
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()

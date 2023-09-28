@@ -18,8 +18,9 @@ Usage:
  to search for.
 
 """
-    
+
 import math
+
 
 def jump_search(arr, target):
     """
@@ -47,27 +48,27 @@ def jump_search(arr, target):
     # Finding the jump size
     step = int(math.sqrt(n))
     prev = 0
-    # Jump through blocks
-    while arr[min(step, n)-1] < target:
+    # Jump through the blocks
+    while arr[min(step, n) - 1] < target:
         prev = step
         step += int(math.sqrt(n))
         # If reached or gone beyond the end of the array, the target is not present
         if prev >= n:
             return -1
-    
-    # Perform a linear search within the block
     while arr[prev] < target:
         prev += 1
-        
+
         # If we've reached the next block or the end of the array,
         # the target is not present
         if prev == min(step, n):
-            return -1    
+            return -1
     # If the element is found, return its index
     if arr[prev] == target:
-        return prev    
+        return prev
     return -1
+
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
