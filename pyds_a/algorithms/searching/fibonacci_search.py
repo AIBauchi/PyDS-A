@@ -19,6 +19,7 @@ python3 fibonacci_search.py
 
 from functools import lru_cache
 
+
 @lru_cache
 def fibonacci(k: int) -> int:
     """
@@ -60,6 +61,7 @@ def fibonacci(k: int) -> int:
         return 1
     else:
         return fibonacci(k - 1) + fibonacci(k - 2)
+
 
 def fibonacci_search(arr: list, val: int) -> int:
     """
@@ -128,6 +130,8 @@ def fibonacci_search(arr: list, val: int) -> int:
         else:
             return -1
 
+
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()

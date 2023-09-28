@@ -61,4 +61,3 @@ def quick_select(items: list, index: int):
     # must be in larger
     else:
         return quick_select(larger, index - (lenght_of_smaller + count))
-    
