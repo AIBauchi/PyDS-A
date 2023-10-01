@@ -1,6 +1,7 @@
 <h1>AI Bauchi</h1>
-![image](https://github.com/AIBauchi/PyDS-A/assets/87228776/47122c28-2ec5-4fce-b2aa-f7565a8f18f7)
+<!-- ![image](https://github.com/AIBauchi/PyDS-A/assets/87228776/47122c28-2ec5-4fce-b2aa-f7565a8f18f7) -->
 
+<img src="https://github.com/AIBauchi/PyDS-A/assets/87228776/47122c28-2ec5-4fce-b2aa-f7565a8f18f7">
 
 # PyDS-A: Python Data Structures and Algorithms
 
