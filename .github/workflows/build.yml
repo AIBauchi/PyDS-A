@@ -21,8 +21,26 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools six wheel
           python -m pip install pytest-cov -r requirements.txt
+          pip install -r requirements.txt
+          pip install pylint
+      - name: Determine edited files
+        id: edited-files
+        run: |
+          # Get the list of edited files
+          edited_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+
+          # Pass the list of edited files as an output
+          echo "::set-output name=edited_files::$edited_files"
+      - name: Run Pylint on edited files
+        run: |
+          # Retrieve the edited files from the previous step's output
+          edited_files="${{ steps.edited-files.outputs.edited_files }}"
+
+          # Run pylint on each edited file
+          for file in $edited_files; do
+              pylint "$file"
+          done
       - name: Run tests
-        # TODO: #8818 Re-enable quantum tests
         run: pytest
             --ignore=scripts/validate_solutions.py
             --cov-report=term-missing:skip-covered
