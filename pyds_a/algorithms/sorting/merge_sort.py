@@ -1,6 +1,6 @@
 """
 Author: Raghav Sharma (rghvsh)
-mergesort.py - A Python implementation of the Merge Sort algorithm for sorting lists.
+merge_sort.py - A Python implementation of the Merge Sort algorithm for sorting lists.
 Merge sort is a general purpose and comparison based algorithm
 Conceptually, a merge sort works as follows:
 Divide the unsorted list into n sublists, each containing one element
@@ -10,9 +10,9 @@ This will be the sorted list.
 Resources used:
 - https://en.wikipedia.org/wiki/Merge_sort
 For doctests run the following command:
-python -m doctest -v mergesort.py
+python -m doctest -v merge_sort.py
 For manual testing run:
-python mergesort.py -v
+python merge_sort.py -v
 """
 
 def merge_two_sorted_arrarys(a, b):
