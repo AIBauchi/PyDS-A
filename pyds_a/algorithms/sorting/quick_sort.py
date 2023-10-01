@@ -40,9 +40,9 @@ def quick_sort(arr):
         return arr
     
     pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
+    left = [var_x for var_x in arr if var_x < pivot]
+    middle = [var_x for var_x in arr if var_x == pivot]
+    right = [var_x for var_x in arr if var_x > pivot]
     
     return quick_sort(left) + middle + quick_sort(right)
 
@@ -50,3 +50,4 @@ if __name__ == "__main__":
     import doctest
 
     doctest.testmod()
+    
