@@ -1,3 +1,6 @@
+<h1>AI Bauchi</h1>
+![AI Bauchi Logo](image.png)
+
 # PyDS-A: Python Data Structures and Algorithms
 
 PyDS-A is an open-source Python repository that provides a collection of data structures and algorithms to assist you in various programming tasks. Whether you're a beginner or an experienced developer, this library can help you learn and implement essential data structures and algorithms in Python.
