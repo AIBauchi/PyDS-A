@@ -4,8 +4,8 @@ Author: Tinny-Robot
 Based on "Skip Lists: A Probabilistic Alternative to Balanced Trees" by William Pugh
 https://epaperpress.com/sortsearch/download/skiplist.pdf
 """
-
 import random
+
 
 class SkipListNode:
     """
