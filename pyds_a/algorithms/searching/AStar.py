@@ -1,14 +1,15 @@
 import logging
 import math
 from queue import PriorityQueue
+import heapq
 
-# Define a custom logger
-log = logging.getLogger("Astar")
+logging.basicConfig(level=logging.INFO)  # Set the desired log level (e.g., DEBUG)
+log = logging.getLogger(__name__)
 
 
 class Item:
     """
-        this is the use of object oriented programming to perform A* Algorithm
+        this is the use of object-oriented programming to perform A* Algorithm
         item -> Node Object
         X_location -> object location on X axis
         Y_location -> object location on Y axis
@@ -22,6 +23,23 @@ class Item:
         self.g_score = 0
         self.x_location = x_location
         self.y_location = y_location
+
+    def __str__(self):
+        return f"Item: {self.item}, X: {self.x_location}, Y: {self.y_location}," \
+               f" G-Score: {self.g_score}, Heuristic: {self.heuristic}"
+
+    def __eq__(self, other):
+        if isinstance(other, Item):
+            return (
+                    self.item == other.item and
+                    self.x_location == other.x_location and
+                    self.y_location == other.y_location
+            )
+        return False
+
+    def __hash__(self):
+        # Hash based on item, x_location, and y_location
+        return hash((self.item, self.x_location, self.y_location))
 
     def get_item(self):
         return self.item
@@ -43,13 +61,38 @@ class Item:
         return (self.heuristic + self.g_score) < (other.heuristic + other.g_score)
 
 
+class Item2:
+    def __init__(self, heuristic, g_score, item):
+        self.item = item
+        self.heuristic = heuristic
+        self.g_score = g_score
+
+    def set_g_score(self, g_score):
+        self.g_score = g_score
+
+    def get_item(self):
+        return self.item
+
+    def get_heuristic(self):
+        return self.heuristic
+
+    def get_g_score(self):
+        return self.g_score
+
+    def __str__(self):
+        return f"Item2{{item={self.item}, heuristic={self.heuristic}, g_score={self.g_score}}}"
+
+    def __lt__(self, other):
+        return (self.heuristic + self.g_score) < (other.heuristic + other.g_score)
+
+
 def xy_distance(starting_point, node):
     x_distance = abs(starting_point.get_x_location() - node.get_x_location())
     y_distance = abs(starting_point.get_y_location() - node.get_y_location())
     return x_distance, y_distance
 
 
-def a_star(graph, start, goal, heuristic_function, g_score_generator):
+def a_star_h_and_g_unknown(graph, start, goal, heuristic_function, g_score_generator):
     log.info("A* initialized")
     log.info(f"Start node: {start} Goal: {goal}")
 
@@ -72,13 +115,14 @@ def a_star(graph, start, goal, heuristic_function, g_score_generator):
             node.set_heuristic(int(euclidean_distance))  # Assuming heuristic is an integer
         return use_graph
 
+    log.info(" Updating heuristics ")
     if heuristic_function == "manhattan":
         graph = set_taxicab_distances(graph, goal)
     elif heuristic_function == "euclidean":
         graph = set_euclidean_distances(graph, goal)
     else:
-        raise ValueError("Heuristic function is undefined")
-
+        log.error("Heuristic function is undefined")
+        raise ValueError
     tunnel = PriorityQueue()
     visited = set()
     tunnel.put(start)
@@ -88,82 +132,44 @@ def a_star(graph, start, goal, heuristic_function, g_score_generator):
         if item not in visited:
             if g_score_generator == "manhattan":
                 log.info(f"g_score_generator set as {g_score_generator}")
-                set_g_scores(item, start, lambda starting_point, neighbor: sum(xy_distance(starting_point, neighbor)))
+                set_g_scores(item, start, lambda starting_point, node: sum(xy_distance(starting_point, node)))
             elif g_score_generator == "euclidean":
                 log.info(f"g_score_generator set as {g_score_generator}")
-                set_g_scores(item, start, lambda starting_point, neighbor: int(
-                    round(math.sqrt(sum(x ** 2 for x in xy_distance(starting_point, neighbor))))))
+                set_g_scores(item, start, lambda starting_point, node: int(
+                    round(math.sqrt(sum(x ** 2 for x in xy_distance(starting_point, node))))))
             else:
                 log.error("G score is undefined")
-                raise ValueError()
-
+                raise ValueError
+            log.info(f"Visiting {item}")
             visited.add(item)
             if item == goal:
+                log.info(f"Found goal node {item}")
                 return item
             neighbors = graph.get(item, [])
             for neighbor in neighbors:
                 tunnel.put(neighbor)
+    log.error("Goal node cannot be found")
+    raise ValueError
 
-    raise ValueError("Goal node cannot be found")
 
+def a_star2(graph, start, goal):
+    tunnel = []
+    init_cost = 0
+    visited = set()
+    heapq.heappush(tunnel, start)
 
-if __name__ == "__main__":
-    # Create sample Item instances representing nodes in your graph
-    itemA = Item("A", 0, 0)
-    itemB = Item("B", 1, 1)
-    itemC = Item("C", 2, 2)
-    itemD = Item("D", 3, 3)
+    while tunnel:
+        item = heapq.heappop(tunnel)
+        if item not in visited:
+            if item == goal:
+                return item
 
-    # Define a graph with neighbors for each node
-    graph = {
-        itemA: [itemB, itemC],
-        itemB: [itemA, itemD],
-        itemC: [itemA, itemD],
-        itemD: [itemB, itemC],
-    }
+            children = graph.get(item, [])
+            final_init_cost = init_cost
+            for t_item in children:
+                t_item.set_g_score(t_item.get_g_score() + final_init_cost)
+            tunnel.extend(children)
+            visited.add(item)
+            init_cost = item.get_g_score()
 
-    # Specify the start and goal nodes
-
-    # Perform A* search with the Manhattan heuristic
-    result_manhattan = a_star(graph, itemA, itemD, "manhattan", "manhattan")
-    print(f"A* search result with Manhattan heuristic: {result_manhattan.get_item()}")
-
-    # Perform A* search with the Euclidean heuristic
-    result_euclidean = a_star(graph, itemA, itemD, "euclidean", "euclidean")
-    print(f"A* search result with Euclidean heuristic: {result_euclidean.get_item()}")
-
-    # Create sample Item instances representing nodes in your graph
-    itemA = Item("A", 0, 0)
-    itemB = Item("B", 1, 1)
-    itemC = Item("C", 2, 2)
-    itemD = Item("D", 3, 3)
-    itemE = Item("E", 4, 4)
-    itemF = Item("F", 5, 5)
-
-    # Define a graph with neighbors for each node
-    graph = {
-        itemA: [itemB, itemC],
-        itemB: [itemA, itemD],
-        itemC: [itemA, itemD],
-        itemD: [itemB, itemC, itemE],
-        itemE: [itemD, itemF],
-        itemF: [itemE],
-    }
-
-    # Specify the start and goal nodes
-    start_node = itemA
-    goal_node = itemF
-
-    # Perform A* search with the Manhattan heuristic
-    result_manhattan = a_star(graph, start_node, goal_node, "manhattan", "manhattan")
-    if result_manhattan:
-        print(f"A* search result with Manhattan heuristic: {result_manhattan.get_item()}")
-    else:
-        print("Goal node cannot be reached with Manhattan heuristic.")
-
-    # Perform A* search with the Euclidean heuristic
-    result_euclidean = a_star(graph, start_node, goal_node, "euclidean", "euclidean")
-    if result_euclidean:
-        print(f"A* search result with Euclidean heuristic: {result_euclidean.get_item()}")
-    else:
-        print("Goal node cannot be reached with Euclidean heuristic.")
+    raise ValueError("Element not accessible")
