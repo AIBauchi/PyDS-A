@@ -1,0 +1,42 @@
+name: PR Review with Pylint
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x  # Choose the Python version you need
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt  # Replace with your project's dependency setup
+
+      - name: Find edited Python files
+        id: edited-files
+        run: |
+          echo "::set-output name=edited_files::$(git diff --name-only ${{ github.base_ref }} ${{ github.head_ref }} | grep '\.py$')"
+        
+      - name: Run Pylint
+        run: |
+          edited_files="${{ steps.edited-files.outputs.edited_files }}"
+          if [ -n "$edited_files" ]; then
+            pip install pylint
+            pylint $edited_files
+          else
+            echo "No Python files were edited."
+          fi
+
+      - name: Run Lint on all files
+        run: pylint --fail-under=9 --ignore="missing-function-docstring" $(git ls-files '*.py')
+
