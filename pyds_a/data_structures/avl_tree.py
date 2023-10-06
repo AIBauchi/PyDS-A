@@ -1,6 +1,8 @@
-"""Author: kaivalmehta
-This code implements avl trees, and insertion , deletion in it. 
-It also implements several traversals of the tree"""
+"""
+Author: kaivalmehta
+This code implements AVL trees, insertion, and deletion in it.
+It also implements several traversals of the tree.
+"""
 
 class Node:
     def __init__(self, d):
@@ -10,6 +12,12 @@ class Node:
         self.height = 1
 
 class AVL:
+    """
+    Author: kaivalmehta
+    This class implements AVL trees, insertion, and deletion in it.
+    It also implements several traversals of the tree.
+    """
+
     def __init__(self):
         self.root = Node(9)
 
@@ -51,6 +59,16 @@ class AVL:
         return x
 
     def insert(self, root, d):
+        """
+        Inserts a new node with data 'd' into the AVL tree.
+        
+        Parameters:
+        root (Node): The root node of the AVL tree.
+        d (int): The data to insert into the tree.
+
+        Returns:
+        Node: The new root of the tree after insertion.
+        """
         if root is None:
             return Node(d)
 
@@ -82,6 +100,16 @@ class AVL:
         return tmp
 
     def delete(self, root, val):
+        """
+        Deletes a node with the given value 'val' from the AVL tree.
+        
+        Parameters:
+        root (Node): The root node of the AVL tree.
+        val (int): The value to delete from the tree.
+
+        Returns:
+        Node: The new root of the tree after deletion.
+        """
         if root is None:
             return root
 
@@ -144,18 +172,3 @@ class AVL:
         self.postorder(root.left)
         self.postorder(root.right)
         print(root.data, end=" ")
-
-#Example Usage
-avl_tree = AVL()
-avl_tree.root = avl_tree.insert(avl_tree.root, 5)
-avl_tree.root = avl_tree.insert(avl_tree.root, 10)
-avl_tree.root = avl_tree.insert(avl_tree.root, 2)
-avl_tree.root = avl_tree.insert(avl_tree.root, 12)
-avl_tree.root = avl_tree.insert(avl_tree.root, 8)
-
-print("Inorder Traversal:")
-avl_tree.inorder(avl_tree.root)
-print("\nPreorder Traversal:")
-avl_tree.preorder(avl_tree.root)
-print("\nPostorder Traversal:")
-avl_tree.postorder(avl_tree.root)
