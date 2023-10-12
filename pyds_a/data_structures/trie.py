@@ -8,7 +8,7 @@ class trie:
 
     def __init__(self):
       self.children = {}
-      self.is_last_letter = False
+      self.last_letter = False
 
     def insert(self, word):
       root = self
@@ -16,10 +16,9 @@ class trie:
         if char not in root.children:
           root.children[char] = trie()
 
-      else:
         root = root.children[char]
 
-      root.is_last_letter = True
+      root.last_letter = True
 
     def search_word(self, word):
       root = self
@@ -29,7 +28,7 @@ class trie:
 
         else:
           root = root.children[char]
-      return root.is_last_letter
+      return root.last_letter
 
     def starts_with(self, substring):
       root = self
