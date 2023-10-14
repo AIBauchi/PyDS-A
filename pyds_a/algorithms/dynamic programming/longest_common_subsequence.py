@@ -26,7 +26,7 @@ python longest_common_subsequence.py (windows)
 """
 
 
-def longest_common_subsequence(first_string: str, second_string: str) -> int:
+def longest_common_subsequence(first_string, second_string):
     """
 
     Examples:
