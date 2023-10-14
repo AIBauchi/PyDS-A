@@ -26,7 +26,7 @@ python longest_common_subsequence.py (windows)
 """
 
 
-def longest_common_subsequence(X: str, Y: str) -> int:
+def longest_common_subsequence(first_string: str, second_string: str) -> int:
     """
 
     Examples:
@@ -38,26 +38,24 @@ def longest_common_subsequence(X: str, Y: str) -> int:
     5
     """
     # length of the strings
-    m = len(X)
-    n = len(Y)
+    len_first_str = len(first_string)
+    len_secong_str = len(second_string)
 
     # declaring the lookup table list for storing the values
-    lookup_table = [[0] * (n + 1) for i in range(m + 1)]
+    lookup_table = [[0] * (len_secong_str + 1) for i in range(len_first_str + 1)]
 
-    """Following steps build L[m + 1][n + 1] in bottom up fashion 
-    Note: L[i][j] contains length of LCS of X[0..i-1] 
-    and Y[0..j-1]"""
-    for i in range(m + 1):
-        for j in range(n + 1):
+    # Following steps build in bottom up fashion:
+    for i in range(len_first_str + 1):
+        for j in range(len_secong_str + 1):
             if i == 0 or j == 0:
                 lookup_table[i][j] = 0
-            elif X[i - 1] == Y[j - 1]:
+            elif first_string[i - 1] == second_string[j - 1]:
                 lookup_table[i][j] = lookup_table[i - 1][j - 1] + 1
             else:
                 lookup_table[i][j] = max(lookup_table[i - 1][j], lookup_table[i][j - 1])
 
     # return the length of the longest common subsequence
-    return lookup_table[m][n]
+    return lookup_table[len_first_str][len_secong_str]
 
 
 if __name__ == "__main__":
