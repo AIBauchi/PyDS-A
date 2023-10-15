@@ -2,9 +2,10 @@
 Author: Rarghav Sharma(rghvsh)
 trie.py - A Python implementation of a trie data structure.
 
-This file contains the implementation of a trie data structure using a OOP.
-A queue follows the First-In-First-Out (FIFO) principle, where the first element added
-to the queue is the first one to be removed.
+This file contains the implementation of a trie data structure using a OOP and dictionary.
+Tries also known as Prefix-Trees are a subcase of Trees which are used specially for storing
+strings and makes the time complexity for searching a word O(n), where n is the length of the
+word to be searched
 
 The trie class provides methods for adding words to the trie, checking whether a spcific
 word is present in the trie, and to see whether the words in the trie start from a specific 
